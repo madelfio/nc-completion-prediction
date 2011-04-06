@@ -1,0 +1,30 @@
+client v0:
+- input: server, port to talk to, filename to write
+- loop
+  - alert server that we want segment i
+  - wait for segment i of the file to come through
+  - inform server that we have finished segment i (UDP? TCP?)
+
+server v0:
+- input: port, file to serve
+- constants: SEGMENTSIZE, CHUNKSIZE
+- loop
+  - if any segments are active:
+    - send a chunk of each segment to appropriate client
+  - loop through any messages received from clients
+    - if NEW_FILE response received:
+      - inform client of file length, segment length (how?)
+      - queue first segment of file
+    - if NEW_SEGMENT response received:
+      - remove current segment from active queue
+      - queue next segment to send to client
+    - if FILE_DONE response received:
+      - remove current  
+
+
+
+Tasks:
+- create WORLD singleton, containing pointer to linked list of peer structures.  
+- Each peer has
+
+
